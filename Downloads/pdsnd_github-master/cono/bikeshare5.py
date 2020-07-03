@@ -150,11 +150,14 @@ while True:
 
 end_station = df['End Station'].mode()[0]
 print(end_station)
+next = 0
+while True:
+  end_station__information = input('\nWould you like to see the rows of raw data? Say yes or no.\n')
+  if end_station_information.lower() != 'yes':
+   return
+  next = next + 5
+  print(df.iloc[next:next+5])
 
-
-df['combination'] = df['Start Station'] + ' to ' + df['End Station']
-combination = df['combination'].mode()[0]
-print(combination)
 df['combination'] = df['Start Station'] + ' to ' + df['End Station']
 combination = df['combination'].mode()[0]
 print(combination)
