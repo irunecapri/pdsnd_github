@@ -59,28 +59,28 @@ def load_data(city, month, day):
     Returns:
         df - Pandas DataFrame containing city data filtered by month and day
     """
-    
+
     df = pd.read_csv(CITY_DATA[city])
 
-    
+
     df['Start Time'] = pd.to_datetime(df['Start Time'])
 
-    
+
     df['month'] = df['Start Time'].dt.month
     df['day_of_week'] = df['Start Time'].dt.weekday_name
 
-   
+
     if month != 'all':
-        
+
         months = ['january', 'february', 'march', 'april', 'may', 'june']
         month = months.index(month) + 1
 
-        
+
         df = df[df['month'] == month]
 
-    
+
     if day != 'all':
-        
+
         df = df[df['day_of_week'] == day.title()]
 
     return df
@@ -141,36 +141,30 @@ def station_stats(df):
     start_station = df['Start Station'].mode()[0]
 print(start_station)
 while True:
-        more_information_start_station = input("Do you want see the top 5 most common Start Stations? Yes or No").lower()               
+        more_information_start_station = input("Do you want see the top 5 most common Start Stations? Yes or No").lower()
         if more_information_start_station == 'Yes':
             start_station_top = df.sort_values(by=['Start Station']).head(5)
             break
-        else: 
+        else:
             break
-
 
 end_station = df['End Station'].mode()[0]
 print(end_station)
-while True:
-        more_information_end_station = input("Do you want see the top 5 most common End Stations? Yes or No").lower()               
-        if more_information_end_station == 'Yes':
-            end_station_top = df.sort_values(by=['End Station']).head(5)
-            break
-        else: 
-            break
-
 
 
 df['combination'] = df['Start Station'] + ' to ' + df['End Station']
 combination = df['combination'].mode()[0]
 print(combination)
+df['combination'] = df['Start Station'] + ' to ' + df['End Station']
+combination = df['combination'].mode()[0]
+print(combination)
+next = 0
 while True:
-        more_information_combination_station = input("Do you want see the top 5 most common combination Stations? Yes or No").lower()           
-        if more_information_combination_station == 'Yes':
-            combination_station_top = df.sort_values(by=['combination']).head(5)
-            break
-        else: 
-            break
+  combination_information = input('\nWould you like to see the rows of raw data? Say yes or no.\n')
+  if combination_information.lower() != 'yes':
+   return
+  next = next + 5
+  print(df.iloc[next:next+5])
 
 
 
