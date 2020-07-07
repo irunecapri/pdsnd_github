@@ -1,11 +1,15 @@
 ### Date created
-05/30/2020
+Include the date you created this project and README file.
 
 ### Project Title
-GitHub Project Udacity
+Replace the Project Title
+
 ### Description
-Post your work on GitHub
+Describe what your project is about and what it does
+
 ### Files used
-README.md and bikeshare.py files 
+Include the files used
+
 ### Credits
 It's important to give proper credit. Add links to any repo that inspired you or blogposts you consulted.
+
